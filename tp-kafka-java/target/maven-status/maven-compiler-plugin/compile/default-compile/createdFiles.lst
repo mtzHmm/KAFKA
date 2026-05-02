@@ -1,0 +1,9 @@
+tn\utm\kafka\SimpleProducer.class
+tn\utm\kafka\SimpleConsumer.class
+tn\utm\kafka\Commande.class
+tn\utm\kafka\miniproject\PosEvent.class
+tn\utm\kafka\miniproject\ChiffreAffairesParVille.class
+tn\utm\kafka\Vente.class
+tn\utm\kafka\miniproject\DetecteurAnomalies.class
+tn\utm\kafka\miniproject\PosEvent$Type.class
+tn\utm\kafka\miniproject\SimulateurCaisse.class
