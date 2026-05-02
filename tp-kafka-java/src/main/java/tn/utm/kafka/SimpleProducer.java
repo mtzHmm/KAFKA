@@ -4,6 +4,7 @@ import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+// props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
 
 /**
  * Partie 4.2 — Premier producteur Kafka.
@@ -35,12 +36,19 @@ public class SimpleProducer {
 
                 producer.send(record, (metadata, exception) -> {
                     if (exception != null) {
-                        System.err.println("Échec d'envoi : " + exception.getMessage());
+                        System.err.println("ERREUR: " + exception.getClass().getSimpleName() + " - " + exception.getMessage());
                     } else {
-                        System.out.printf("  Envoyé — partition=%d, offset=%d, key=%s%n",
-                                metadata.partition(), metadata.offset(), key);
+                        System.out.println("  Envoye [OK] partition=" + metadata.partition() +
+                                ", offset=" + metadata.offset() +
+                                ", key=" + record.key());
                     }
                 });
+
+                try {
+    Thread.sleep(500);
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
             }
             producer.flush();
             System.out.println("Tous les messages ont été envoyés.");
